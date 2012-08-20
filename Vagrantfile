@@ -5,6 +5,7 @@ Vagrant::Config.run do |config|
   config.vm.box = "precise64"
 
   config.vm.forward_port 7000, 7000
+  config.vm.forward_port 2281, 2281
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
@@ -13,5 +14,6 @@ Vagrant::Config.run do |config|
 
     chef.add_role "base"
     chef.add_recipe "bp-controller"
+    chef.add_recipe "bp-worker"
   end
 end
